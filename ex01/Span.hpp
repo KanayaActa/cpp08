@@ -6,7 +6,7 @@
 /*   By: miwasa <miwasa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:45:56 by miwasa            #+#    #+#             */
-/*   Updated: 2025/03/12 15:47:42 by miwasa           ###   ########.fr       */
+/*   Updated: 2025/03/12 15:57:25 by miwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,20 @@
 
 class Span {
 private:
-    std::vector<int> _numbers;
-    unsigned int _max_size;
+	std::vector<int> _numbers;
+	unsigned int _max_size;
 public:
-    // コンストラクタ：最大要素数を指定
-    Span(unsigned int N);
+	Span(unsigned int N);
+	Span(const Span & other);
+	Span & operator=(const Span & other);
+	~Span();
 
-    // コピーコンストラクタ／代入演算子／デストラクタ
-    Span(const Span & other);
-    Span & operator=(const Span & other);
-    ~Span();
-
-    // 単一の数値を追加する
-    void addNumber(int number);
-
-    // 範囲（イテレータ）で複数の数値を一括追加する
-    template <typename Iterator>
-    void addNumbers(Iterator begin, Iterator end);
-
-    // 最短のスパン（隣接要素の最小差）を返す
-    int shortestSpan() const;
-
-    // 最長のスパン（最大値と最小値の差）を返す
-    int longestSpan() const;
-
-    // オプション: 内部データを取得するための getter
-    const std::vector<int>& getNumbers() const;
+	void addNumber(int number);
+	template <typename Iterator>
+	void addNumbers(Iterator begin, Iterator end);
+	int shortestSpan() const;
+	int longestSpan() const;
+	const std::vector<int>& getNumbers() const;
 };
 
 template <typename Iterator>
